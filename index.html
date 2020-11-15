@@ -25,14 +25,16 @@
   <body>
     <header class="jumbotron">
       <h1 class="display-3">Date</h1>
-      <h2 id="currentTime">Time</h2>
+      <section class="description">  
+      <h4>Enter today's events in the timeblocks below. Past events will appear grey, events currently taking place will appear red, and future events will appear green.</h4>
+      </section>
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
       <table class="table table-bordered table-hover">
-        <tr class="col-auto" id="9am" data-timeblock="9">
-        <td scope="row">9 AM</td>
-        <td>
+        <tr id="9am" data-timeblock="9">
+        <td><h1>9 AM</h1></td>
+        <td class="col-lg">
           <label name="event-title" for="event-info"><h3>Event</h3></label>
           <br>
           <textarea type="textarea" class="form-control " placeholder="Enter event info" id="9am-event-info"></textarea>
@@ -41,7 +43,7 @@
         </td>
         </tr>
         <tr id="10am" data-timeblock="10">
-          <td scope="row">10 AM</td>
+          <td scope="row"><h1>10 AM</h1></td>
           <td>
             <label name="event-title" for="event-title"><h3>Event</h3></label>
             <br>
@@ -51,7 +53,7 @@
           </td>
           </tr>
           <tr id="11am" data-timeblock="11">
-            <td scope="row">11 AM</td>
+            <td scope="row"><h1>11 AM</h1></td>
             <td>
               <label name="event-title" for="event-title"><h3>Event</h3></label>
               <br>
@@ -61,7 +63,7 @@
             </td>
           </tr>
           <tr id="12pm" data-timeblock="12">
-            <td scope="row">12 PM</td>
+            <td scope="row"><h1>12 PM</h1></td>
             <td>
               <label name="event-title" for="event-title"><h3>Event</h3></label>
               <br>
@@ -71,7 +73,7 @@
             </td>
           </tr>
           <tr id="1pm" data-timeblock="13">
-            <td scope="row">1 PM</td>
+            <td scope="row"><h1>1 PM</h1></td>
             <td>
               <label name="event-title" for="event-title"><h3>Event</h3></label>
               <br>
@@ -81,7 +83,7 @@
             </td>
           </tr>
           <tr id="2pm" data-timeblock="14">
-            <td scope="row">2 PM</td>
+            <td scope="row"><h1>2 PM</h1></td>
             <td>
               <label name="event-title" for="event-title"><h3>Event</h3></label>
               <br>
@@ -91,7 +93,7 @@
             </td>
           </tr>
           <tr id="3pm" data-timeblock="15">
-            <td scope="row">3 PM</td>
+            <td scope="row"><h1>3 PM</h1></td>
             <td>
               <label name="event-title" for="event-title"><h3>Event</h3></label>
               <br>
@@ -101,7 +103,7 @@
             </td>
           </tr>
           <tr id="4pm" data-timeblock="16">
-            <td scope="row">4 PM</td>
+            <td scope="row"><h1>4 PM</h1></td>
             <td>
               <label name="event-title" for="event-title"><h3>Event</h3></label>
               <br>
@@ -125,7 +127,7 @@
       //Pseudocode
       //1. When the user first accesses the page, the current day's timeslots appear, along with the current date and time at the top of the page
       moment().format("MMMM Do YYYY");
-      $("h1").text(moment().format("MM/DD/YYYY"));
+      $(".display-3").text(moment().format("MM/DD/YYYY"));
       var currentTime = moment();
       $("#currentTime").text(currentTime.format("h:mm:ss a"));
       console.log(currentTime.format("H"));
@@ -245,19 +247,95 @@
         localStorage.setItem('9amEvent',eventInfo);
       });
       
+
+      $('#update10am').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#10am-event-info').val();
+        localStorage.setItem('10amEvent',eventInfo);
+      });
+
+      $('#update11am').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#11am-event-info').val();
+        localStorage.setItem('11amEvent',eventInfo);
+      });
+
+      $('#update12pm').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#12pm-event-info').val();
+        localStorage.setItem('12pmEvent',eventInfo);
+      });
+
+      $('#update1pm').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#1pm-event-info').val();
+        localStorage.setItem('1pmEvent',eventInfo);
+      });
+
+      $('#update2pm').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#2pm-event-info').val();
+        localStorage.setItem('2pmEvent',eventInfo);
+      });
+
+      $('#update3pm').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#3pm-event-info').val();
+        localStorage.setItem('3pmEvent',eventInfo);
+      });
+
+      $('#update4pm').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#4pm-event-info').val();
+        localStorage.setItem('4pmEvent',eventInfo);
+      });
       //This code pulls the stored events and sets them on page load
       $(document).ready(function() {
         var eventInfo = localStorage.getItem('9amEvent');
         $('#9am-event-info').val(eventInfo);
-      })
-      
-      
+      });
 
-      
-        
-        
-          
-          
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('10amEvent');
+        $('#10am-event-info').val(eventInfo);
+      });
+
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('11amEvent');
+        $('#11am-event-info').val(eventInfo);
+      });
+
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('12pmEvent');
+        $('#12pm-event-info').val(eventInfo);
+      });
+
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('1pmEvent');
+        $('#1pm-event-info').val(eventInfo);
+      });
+
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('2pmEvent');
+        $('#2pm-event-info').val(eventInfo);
+      });
+
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('3pmEvent');
+        $('#3pm-event-info').val(eventInfo);
+      });
+
+
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('4pmEvent');
+        $('#4pm-event-info').val(eventInfo);
+      });
           /* function handleSave() {
             $(this) // this is the Button
 
