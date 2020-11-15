@@ -30,49 +30,86 @@
     <div class="container">
       <!-- Timeblocks go here -->
       <table class="table table-bordered table-hover">
-        <tr data-attr="timeblock">
-        <th scope="row">9 AM</th>
-        <a href="#">
+        <tr class="col-auto" id="9am" data-timeblock="9">
+        <td scope="row">9 AM</td>
         <td>
-          <p id="9am-event-title">Free</p>
-          <p id="9am-event-description"></p>
+          <label name="event-title" for="event-info"><h3>Event</h3></label>
+          <br>
+          <textarea type="textarea" class="form-control " placeholder="Enter event info" id="9am-event-info"></textarea>
+          <br>
+          <button type="button" class="btn btn-info" id="update9am">Update</button>
         </td>
-        </a>
         </tr>
-        <tr>
-        <th scope="row">10 AM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <th scope="row">11 AM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <th scope="row">12 PM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <th scope="row">1 PM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <tr>
-        <th scope="row">2 PM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <th scope="row">3 PM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <th scope="row">4 PM</th>
-        <td>Event</td>
-        </tr>
-        <tr>
-        <th scope="row">5 PM</th>
-        <td>Event</td>
-        </tr>
-
+        <tr id="10am" data-timeblock="10">
+          <td scope="row">10 AM</td>
+          <td>
+            <label name="event-title" for="event-title"><h3>Event</h3></label>
+            <br>
+            <textarea type="textarea" class="form-control " placeholder="Enter event info" id="10am-event-info"></textarea>
+            <br>
+            <button type="button" class="btn btn-info" id="update10am">Update</button>
+          </td>
+          </tr>
+          <tr id="11am" data-timeblock="11">
+            <td scope="row">11 AM</td>
+            <td>
+              <label name="event-title" for="event-title"><h3>Event</h3></label>
+              <br>
+              <textarea type="textarea" class="form-control " placeholder="Enter event info" id="11am-event-info"></textarea>
+              <br>
+              <button type="button" class="btn btn-info" id="update11am">Update</button>
+            </td>
+          </tr>
+          <tr id="12pm" data-timeblock="12">
+            <td scope="row">12 PM</td>
+            <td>
+              <label name="event-title" for="event-title"><h3>Event</h3></label>
+              <br>
+              <textarea type="textarea" class="form-control " placeholder="Enter event info" id="12pm-event-info"></textarea>
+              <br>
+              <button type="button" class="btn btn-info" id="update12pm">Update</button>
+            </td>
+          </tr>
+          <tr id="1pm" data-timeblock="13">
+            <td scope="row">1 PM</td>
+            <td>
+              <label name="event-title" for="event-title"><h3>Event</h3></label>
+              <br>
+              <textarea type="textarea" class="form-control " placeholder="Enter event info" id="1pm-event-info"></textarea>
+              <br>
+              <button type="button" class="btn btn-info" id="update1pm">Update</button>
+            </td>
+          </tr>
+          <tr id="2pm" data-timeblock="14">
+            <td scope="row">2 PM</td>
+            <td>
+              <label name="event-title" for="event-title"><h3>Event</h3></label>
+              <br>
+              <textarea type="textarea" class="form-control " placeholder="Enter event info" id="2pm-event-info"></textarea>
+              <br>
+              <button type="button" class="btn btn-info" id="update2pm">Update</button>
+            </td>
+          </tr>
+          <tr id="3pm" data-timeblock="15">
+            <td scope="row">3 PM</td>
+            <td>
+              <label name="event-title" for="event-title"><h3>Event</h3></label>
+              <br>
+              <textarea type="textarea" class="form-control " placeholder="Enter event info" id="3pm-event-info"></textarea>
+              <br>
+              <button type="button" class="btn btn-info" id="update3pm">Update</button>
+            </td>
+          </tr>
+          <tr id="4pm" data-timeblock="16">
+            <td scope="row">4 PM</td>
+            <td>
+              <label name="event-title" for="event-title"><h3>Event</h3></label>
+              <br>
+              <textarea type="textarea" class="form-control " placeholder="Enter event info" id="4pm-event-info"></textarea>
+              <br>
+              <button type="button" class="btn btn-info" id="update4pm">Update</button>
+            </td>
+          </tr>
 
       </table>
       
@@ -91,11 +128,164 @@
       $("h1").text(moment().format("MM/DD/YYYY"));
       var currentTime = moment();
       $("#currentTime").text(currentTime.format("h:mm:ss a"));
+      console.log(currentTime.format("H"));
 
-      //2. Time blocks are color-coded depending on if they are in the past, present, or future. Past = grey, present = red, future = white.
-      function changeColor(){
-        if ()
-      }
+      
+      
+
+
+
+      //3. Time blocks are color-coded depending on if they are in the past, present, or future. Past = grey, present = red, future = white.
+      
+    
+      var currentHour = moment().format("H");
+      console.log(currentHour);
+
+
+      //This code block sets the time block color based on the time of day for each timeblock
+        var timeblock9Am = $('#9am');
+        var timeblockHour9Am = $('#9am').data('timeblock');
+        console.log(timeblockHour9Am);
+        if (timeblockHour9Am < currentHour) {
+          timeblock9Am.attr('class','past');
+        } else if (timeblockHour9Am == currentHour) {
+          timeblock9Am.attr('class','present');
+        } else {
+          timeblock9Am.attr('class','future');
+        }
+
+
+        var timeblock10Am = $('#10am');
+        var timeblockHour10Am = $('#10am').data('timeblock');
+        console.log(timeblockHour10Am);
+        if (timeblockHour10Am < currentHour) {
+          timeblock10Am.attr('class','past');
+        } else if (timeblockHour10Am == currentHour) {
+          timeblock10Am.attr('class','present');
+        } else {
+          timeblock10Am.attr('class','future');
+        }
+
+
+        var timeblock11Am = $('#11am');
+        var timeblockHour11Am = $('#11am').data('timeblock');
+        console.log(timeblockHour11Am);
+        if (timeblockHour11Am < currentHour) {
+          timeblock11Am.attr('class','past');
+        } else if (timeblockHour11Am == currentHour) {
+          timeblock11Am.attr('class','present');
+        } else {
+          timeblock11Am.attr('class','future');
+        }
+
+
+        var timeblock12Pm = $('#12pm');
+        var timeblockHour12Pm = $('#12pm').data('timeblock');
+        console.log(timeblockHour12Pm);
+        if (timeblockHour12Pm < currentHour) {
+          timeblock12Pm.attr('class','past');
+        } else if (timeblockHour12Pm == currentHour) {
+          timeblock12Pm.attr('class','present');
+        } else {
+          timeblock12Pm.attr('class','future');
+        }
+
+
+        var timeblock1Pm = $('#1pm');
+        var timeblockHour1Pm = $('#1pm').data('timeblock');
+        console.log(timeblockHour1Pm);
+        if (timeblockHour1Pm < currentHour) {
+          timeblock1Pm.attr('class','past');
+        } else if (timeblockHour1Pm == currentHour) {
+          timeblock1Pm.attr('class','present');
+        } else {
+          timeblock1Pm.attr('class','future');
+        }
+
+
+        var timeblock2Pm = $('#2pm');
+        var timeblockHour2Pm = $('#2pm').data('timeblock');
+        console.log(timeblockHour2Pm);
+        if (timeblockHour2Pm < currentHour) {
+          timeblock2Pm.attr('class','past');
+        } else if (timeblockHour2Pm == currentHour) {
+          timeblock2Pm.attr('class','present');
+        } else {
+          timeblock2Pm.attr('class','future');
+        }
+
+
+        var timeblock3Pm = $('#3pm');
+        var timeblockHour3Pm = $('#3pm').data('timeblock');
+        console.log(timeblockHour3Pm);
+        if (timeblockHour3Pm < currentHour) {
+          timeblock3Pm.attr('class','past');
+        } else if (timeblockHour3Pm == currentHour) {
+          timeblock3Pm.attr('class','present');
+        } else {
+          timeblock3Pm.attr('class','future');
+        }
+
+
+        var timeblock4Pm = $('#4pm');
+        var timeblockHour4Pm = $('#4pm').data('timeblock');
+        console.log(timeblockHour4Pm);
+        if (timeblockHour4Pm < currentHour) {
+          timeblock4Pm.attr('class','past');
+        } else if (timeblockHour4Pm == currentHour) {
+          timeblock4Pm.attr('class','present');
+        } else {
+          timeblock4Pm.attr('class','future');
+        }
+
+      //This code sets the event listeners and functions on the update buttons
+      $('#update9am').on('click', function(event){
+        event.preventDefault;
+        var eventInfo = $('#9am-event-info').val();
+        localStorage.setItem('9amEvent',eventInfo);
+      });
+      
+      //This code pulls the stored events and sets them on page load
+      $(document).ready(function() {
+        var eventInfo = localStorage.getItem('9amEvent');
+        $('#9am-event-info').val(eventInfo);
+      })
+      
+      
+
+      
+        
+        
+          
+          
+          /* function handleSave() {
+            $(this) // this is the Button
+
+
+            // var target = $(event.target);
+            // if (target.is('tr')) {
+              target.children();
+            //}
+
+            // When a row is clicked,
+            // 
+
+          $(document).on("click", "button", handleSave);
+          //$('tr').click(addEvent).find('tr');
+          //('<label for="event">Event title:</label><input type="text" id="event" name="event-name"><br><label for="event-description">Event description and notes:</label><input type="textarea" id="event-description" name="event-description">').appendTo("td");
+          
+         } */
+      
+    
+  
+
+    
+
+    
+      
+
+
+      //3. 
       
 
     </script>
